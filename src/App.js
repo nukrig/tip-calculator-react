@@ -8,6 +8,11 @@ function App() {
   const [bill,setBill]=useState(0)
   const [tipAmount,setTipAmount]=useState(0)
   const [people,setPeople]=useState(0)
+  const [activeTip,setActiveTip]=useState(0)
+
+  const handleClickButton=(tip)=>{
+    setActiveTip(tip)
+  }
   return (
     <div className="background">
       <img src={logo}/>
@@ -17,7 +22,7 @@ function App() {
           <input 
           className='fullWidthInp' 
           type='number'
-          placeholder='0' 
+          placeholder='0'
           onChange={(e)=>{
             setBill(e.target.value)
           }}/>
@@ -30,7 +35,9 @@ function App() {
               value={tip/100}
               onClick={(e)=>{
                 setTipAmount(e.target.value)
+                handleClickButton(tip)
               }}
+              style={{ backgroundColor: activeTip === tip ? "#26C2AE" : "" }}
               >{tip}%</button>
             })}
             <input 
@@ -39,13 +46,14 @@ function App() {
             placeholder='CUSTOM' 
             onChange={(e)=>{
               setTipAmount(e.target.value/100)
+              handleClickButton(e.target.value)
             }}/>
           </div>
           <div style={{marginTop:30}}>
             <label style={{marginTop:24}}>Number of People</label>
             {people==0 ? <span className='cantBeZero'>Can’t be zero</span> : ''}
           </div>
-          <input 
+          <input
           className='fullWidthInp' 
           type='number' 
           placeholder='0'
