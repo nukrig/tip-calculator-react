@@ -77,3 +77,20 @@
   float: right;
   margin-bottom: 6px;
 }
+
+@media (max-width: 920px) {
+  .app {
+    width: 375px;
+    flex-direction: column;
+    padding: 32px;
+  }
+  .calculator {
+    width: 375px;
+  }
+  .tips {
+    justify-content: space-between;
+  }
+  .tipAmount {
+    width: 147px;
+  }
+}
